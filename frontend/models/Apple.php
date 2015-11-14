@@ -16,19 +16,22 @@ class Apple extends Model
     private $kind;
     private $quality;
     private $juicy;
+    private $weight;
 
     /**
      * Apple constructor.
-     * @param $kind
-     * @param $quality
-     * @param $isJuicy
+     * @param string $kind
+     * @param int $quality
+     * @param boolean|int $isJuicy
+     * @param int $weight
      */
-    public function __construct($kind, $quality, $isJuicy)
+    public function __construct($kind, $quality, $isJuicy, $weight)
     {
         parent::__construct([]);
         $this->kind = $kind;
         $this->quality = $quality;
         $this->juicy = $isJuicy;
+        $this->weight = $weight;
     }
 
     /**
@@ -55,7 +58,13 @@ class Apple extends Model
         return $this->juicy;
     }
 
-
+    /**
+     * @return mixed
+     */
+    public function getWeight()
+    {
+        return $this->weight;
+    }
 
 
 }

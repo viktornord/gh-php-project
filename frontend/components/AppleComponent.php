@@ -8,33 +8,22 @@
 
 namespace frontend\components;
 
-
 use yii\base\Component;
 
 class AppleComponent extends Component
 {
-    private $model;
     private $initPrice = 10;
 
     /**
-     * AppleComponent constructor.
      * @param \frontend\models\Apple $model
-     */
-    public function __construct($model)
-    {
-        parent::__construct();
-        $this->model = $model;
-    }
-
-    /**
-     * @param int $weight
      * @return int
      */
-    public function calculatePrice($weight)
+    public function calculatePrice($model)
     {
-        $quality = $this->model->getQuality();
+        
+        $quality = $model->getQuality();
         $price = $this->initPrice;
-        if ($this->model->isJuicy())
+        if ($model->isJuicy())
         {
             $price += 1;
         }
@@ -45,7 +34,7 @@ class AppleComponent extends Component
         {
             $price -= 1;
         }
-        $price *= $weight;
+        $price *= $model->getWeight();
 
         return $price;
     }

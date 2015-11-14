@@ -36,14 +36,14 @@ class AppleController extends Controller
 
     public function actionIndex() {
         $weight = $_GET['weight'];
-        $apple = new Apple($_GET['kind'], $_GET['quality'], $_GET['juicy']);
+        $apple = new Apple($_GET['kind'], $_GET['quality'], $_GET['juicy'], $_GET['weight']);
         $appleComp = new AppleComponent($apple);
 
         return $this->render('index', [
             'apple' => $apple,
             'weight' => $weight,
             'initPrice' => $appleComp->getInitPrice(),
-            'totalPrice' => $appleComp->calculatePrice($weight)
+            'totalPrice' => $appleComp->calculatePrice($apple)
         ]);
     }
 }

@@ -12,6 +12,8 @@ namespace common\models;
 use frontend\components\OrderComponent;
 use Yii;
 use yii\base\Model;
+use yii\bootstrap\ActiveForm;
+use yii\web\Response;
 
 class OrderForm extends Model
 {
@@ -20,7 +22,9 @@ class OrderForm extends Model
     public $good;
     public $firstName;
     public $lastName;
+    public $nickname;
     public $email;
+    public $site;
 
     public $phone;
     public $withDelivery = true;
@@ -37,8 +41,10 @@ class OrderForm extends Model
         return [
             [['good', 'firstName', 'lastName', 'email'], 'required', 'message' => 'Please fill this filed, it is required'],
             [['good'], 'in', 'range' => array_keys(OrderComponent::$goods), 'message' => 'We don\'t have good you want to order'],
+            [['nickname'], 'default', 'value' => $this->firstName],
             [['phone'], 'match', 'pattern' => $this->phonePattern, 'message' => 'Doesn\'t look like phone number'],
             [['email'], 'email', 'message' => 'Doesn\'t look like email'],
+            [['site'], 'url', 'message' => 'Please set a real url'],
             [['withDelivery', 'deliveryAddress'], 'validateDelivery']
         ];
     }
@@ -52,10 +58,6 @@ class OrderForm extends Model
 
     public function makeOrder()
     {
-//        if (Yii::$app->request->isAjax) {
-//            Yii::$app->response->format = Response::FORMAT_JSON;
-//            return ActiveForm::validate($this);
-//        }
         return $this->validate();
     }
 

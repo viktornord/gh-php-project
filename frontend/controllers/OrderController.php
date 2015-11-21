@@ -39,6 +39,7 @@ class OrderController extends Controller
 
     public function actionIndex() {
         $model = new OrderForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->makeOrder()) {
             return $this->render('success');
         }

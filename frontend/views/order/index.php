@@ -6,7 +6,6 @@
  * Time: 01:51
  */
 use yii\bootstrap\ActiveForm;
-use yii\jui\Slider;
 use yii\helpers\Html;
 
 /**
@@ -27,9 +26,11 @@ use yii\helpers\Html;
                     'enableAjaxValidation' => true
                 ]); ?>
                     <?= $form->field($model, 'good')->dropDownList($goods) ?>
-                    <?= $form->field($model, 'firstName') ?>
+                    <?= $form->field($model, 'firstName', ['enableAjaxValidation' => true]) ?>
                     <?= $form->field($model, 'lastName') ?>
+                    <?= $form->field($model, 'nickname') ?>
                     <?= $form->field($model, 'email') ?>
+                    <?= $form->field($model, 'site') ?>
                     <?= $form->field($model, 'phone') ?>
                     <?= $form->field($model, 'withDelivery')->checkbox() ?>
                     <?= $form->field($model, 'deliveryAddress') ?>

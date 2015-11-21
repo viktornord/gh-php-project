@@ -10,11 +10,12 @@ namespace frontend\controllers;
 
 
 use frontend\components\AppleComponent;
-use frontend\models\Apple;
+use frontend\models\Good;
+use common\models\OrderForm;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 
-class AppleController extends Controller
+class OrderController extends Controller
 {
     /**
      * @inheritdoc
@@ -26,7 +27,7 @@ class AppleController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index'],
+                        'actions' => ['index', 'order'],
                         'allow' => true,
                     ],
                 ]
@@ -35,15 +36,19 @@ class AppleController extends Controller
     }
 
     public function actionIndex() {
-        $weight = $_GET['weight'];
-        $apple = new Apple($_GET['kind'], $_GET['quality'], $_GET['juicy'], $_GET['weight']);
-        $appleComp = new AppleComponent($apple);
-
+        $model = new OrderForm();
         return $this->render('index', [
-            'apple' => $apple,
-            'weight' => $weight,
-            'initPrice' => $appleComp->getInitPrice(),
-            'totalPrice' => $appleComp->calculatePrice($apple)
+            'model' => $model,
+
+        ]);
+    }
+
+    public function actionOrder() {
+
+        $model = new OrderForm();
+        return $this->render('index', [
+            'model' => $model,
+
         ]);
     }
 }

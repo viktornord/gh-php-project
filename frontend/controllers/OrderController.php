@@ -9,11 +9,13 @@
 namespace frontend\controllers;
 
 
-use frontend\components\AppleComponent;
-use frontend\models\Good;
+use frontend\components\OrderComponent;
 use common\models\OrderForm;
+use Yii;
+use yii\bootstrap\ActiveForm;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\Response;
 
 class OrderController extends Controller
 {
@@ -37,18 +39,13 @@ class OrderController extends Controller
 
     public function actionIndex() {
         $model = new OrderForm();
+        if ($model->load(Yii::$app->request->post()) && $model->makeOrder()) {
+            return $this->render('success');
+        }
+
         return $this->render('index', [
             'model' => $model,
-
-        ]);
-    }
-
-    public function actionOrder() {
-
-        $model = new OrderForm();
-        return $this->render('index', [
-            'model' => $model,
-
+            'goods' => OrderComponent::$goods
         ]);
     }
 }

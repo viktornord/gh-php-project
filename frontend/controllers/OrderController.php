@@ -11,7 +11,6 @@ namespace frontend\controllers;
 
 use common\components\HelperComponent;
 use Yii;
-use yii\base\Exception;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use common\models\OrderForm;
@@ -20,6 +19,8 @@ use common\models\Good;
 
 class OrderController extends Controller
 {
+    public $layout = 'lostParadise';
+
     /**
      * @inheritdoc
      */
@@ -66,8 +67,6 @@ class OrderController extends Controller
 
     public function actionOrders()
     {
-        return $this->render('orders', [
-            'orders' => Order::find()->limit(100)->all()
-        ]);
+        return $this->render('orders');
     }
 }

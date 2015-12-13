@@ -1,7 +1,6 @@
-#gh Yii hw1
-
-You have to pass such params to the apple controller and action index
-
-kind: string, quality: number (1-100), juicy: number (0 | 1), weight: number
-
-Example: kind=hi&quality=60&juicy=1&weight=20
+#gh Yii hw3
+There are two tables have to be in the db
+Firstly you have to configure db connection and up migrations afterwords
+Then you are able to do the following actions
+ - go to the  action index of order controller for creating the new order
+ - go to the  action orders of order controller in order ot see all orders

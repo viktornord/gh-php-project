@@ -1,4 +1,4 @@
-#gh Yii hw3
+#gh Yii hw4
 There are two tables have to be in the db
 Firstly you have to configure db connection and up migrations afterwords
 Then you are able to do the following actions

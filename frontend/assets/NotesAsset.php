@@ -3,24 +3,24 @@
  * Created by PhpStorm.
  * User: victor
  * Date: 13/12/15
- * Time: 18:57
+ * Time: 20:23
  */
 
 namespace frontend\assets;
 
+
 use yii\web\AssetBundle;
 
-class LostParadiseAsset extends AssetBundle
+class NotesAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
 
     public $css = [
-        'lostparadise/css/main.css',
+        'css/notes.css',
     ];
 
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        'frontend\assets\LostParadiseAsset',
     ];
 }

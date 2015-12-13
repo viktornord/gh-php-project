@@ -3,11 +3,13 @@
 /* @var $content string */
 
 use frontend\assets\LostParadiseAsset;
-use yii\bootstrap\NavBar;
+use frontend\assets\NotesAsset;
+use frontend\widgets\NotesWidget;
 use yii\helpers\Html;
 use yii\widgets\Menu;
 
 LostParadiseAsset::register($this);
+NotesAsset::register($this);
 ?>
 <?php $this->beginPage(); ?>
     <!DOCTYPE html>
@@ -80,6 +82,14 @@ LostParadiseAsset::register($this);
                         ]);
 
                     ?>
+                    <?= NotesWidget::widget([
+                        'notes' => [
+                            'Hello',
+                            'World',
+                            'Again',
+                            'Smth',
+                        ]
+                    ]); ?>
                     <div class="clear"></div>
                 </div>
                 <div id="content">

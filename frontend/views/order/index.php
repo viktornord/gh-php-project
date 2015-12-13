@@ -6,11 +6,14 @@
  * Time: 01:51
  */
 
+use common\models\OrderForm;
+use frontend\widgets\NotesWidget;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
 /**
  * @var $form yii\bootstrap\ActiveForm
+ * @var OrderForm $model
  * @var String[] $good_names
  * @var int $totalPrice
  * @var int $initPrice
@@ -36,3 +39,5 @@ use yii\helpers\Html;
     <?= $form->field($model, 'delivery_address') ?>
     <?= Html::submitButton('Make order', ['class' => 'btn btn-primary', 'name' => 'order-button']) ?>
 <?php ActiveForm::end(); ?>
+
+

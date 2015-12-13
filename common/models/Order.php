@@ -29,21 +29,8 @@ class Order extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'orders';
+        return '{{%orders}}';
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['good_id', 'goods_count', 'total_price', 'with_delivery'], 'integer'],
-            [['email', 'site', 'phone', 'with_delivery', 'delivery_address'], 'required'],
-            [['firstname', 'lastname', 'email', 'site', 'phone', 'delivery_address'], 'string', 'max' => 255]
-        ];
-    }
-
 
     /**
      * @return \yii\db\ActiveQuery

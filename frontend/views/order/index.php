@@ -6,7 +6,6 @@
  * Time: 01:51
  */
 
-use common\models\Good;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 

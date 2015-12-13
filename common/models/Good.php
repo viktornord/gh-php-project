@@ -23,7 +23,7 @@ class Good extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'goods';
+        return '{{%goods}}';
     }
 
 

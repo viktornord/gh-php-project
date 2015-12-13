@@ -18,9 +18,9 @@ class m151213_082359_init_php_gh extends Migration
             'firstname' => $this->string()->notNull()->defaultValue('unknown'),
             'lastname' => $this->string()->notNull()->defaultValue('unknown'),
             'email' => $this->string()->notNull(),
-            'site' => $this->string()->notNull(),
+            'site' => $this->string(),
             'phone' => $this->string()->notNull(),
-            'with_delivery' => $this->boolean()->notNull(),
+            'with_delivery' => $this->boolean()->notNull()->defaultValue(0),
             'delivery_address' => $this->string()->notNull(),
         ], $tableOptions);
 

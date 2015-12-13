@@ -30,7 +30,7 @@ class OrderController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'order'],
+                        'actions' => ['index', 'orders'],
                         'allow' => true,
                     ],
                 ]
@@ -38,10 +38,12 @@ class OrderController extends Controller
         ];
     }
 
-    public function actionIndex() {
+    public function actionIndex()
+    {
         $model = new OrderForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->makeOrder()) {
+            $model->good_id++;
             // create a new order
             $order = new Order();
             // set total price
@@ -53,12 +55,19 @@ class OrderController extends Controller
             // save the order
             $order->save();
 
-            return $this->render('success');
+            return $this->redirect('/index.php?r=order%2Forders');
         }
 
         return $this->render('index', [
             'model' => $model,
             'good_names' => HelperComponent::array_pluck('name', Good::find()->select('name')->all())
+        ]);
+    }
+
+    public function actionOrders()
+    {
+        return $this->render('orders', [
+            'orders' => Order::find()->limit(100)->all()
         ]);
     }
 }

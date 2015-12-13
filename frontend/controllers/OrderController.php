@@ -20,6 +20,8 @@ use common\models\Good;
 
 class OrderController extends Controller
 {
+    public $layout = 'lostParadise';
+
     /**
      * @inheritdoc
      */

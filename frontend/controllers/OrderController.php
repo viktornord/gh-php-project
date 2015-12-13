@@ -66,8 +66,6 @@ class OrderController extends Controller
 
     public function actionOrders()
     {
-        return $this->render('orders', [
-            'orders' => Order::find()->limit(100)->all()
-        ]);
+        return $this->render('orders');
     }
 }
